@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tunisian Services - خدمات المستقلين التونسيين</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #ffffff;
+            color: #000000;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            background-color: #000000;
+            color: #ffffff;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #ffffff;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #cccccc;
+        }
+
+        .contact-btn {
+            background-color: #ffffff;
+            color: #000000;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .contact-btn:hover {
+            background-color: #f0f0f0;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #000000 0%, #333333 100%);
+            color: #ffffff;
+            padding: 120px 0 80px;
+            text-align: center;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #ffffff;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.8;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 80px 0;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #000000;
+            font-weight: bold;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 0 2rem;
+        }
+
+        .service-card {
+            background: #ffffff;
+            border: 2px solid #000000;
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.05), transparent);
+            transition: left 0.5s;
+        }
+
+        .service-card:hover::before {
+            left: 100%;
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: #000000;
+        }
+
+        .service-description {
+            margin-bottom: 1.5rem;
+            color: #333333;
+        }
+
+        .price-info {
+            background-color: #f8f8f8;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        .original-price {
+            text-decoration: line-through;
+            color: #888888;
+            font-size: 1.1rem;
+        }
+
+        .current-price {
+            color: #000000;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-top: 0.5rem;
+        }
+
+        .price-range {
+            color: #000000;
+            font-size: 1.3rem;
+            font-weight: bold;
+        }
+
+        .order-btn {
+            background-color: #000000;
+            color: #ffffff;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .order-btn:hover {
+            background-color: #333333;
+            transform: translateY(-2px);
+        }
+
+        /* About Section */
+        .about {
+            background-color: #f8f8f8;
+            padding: 80px 0;
+        }
+
+        .about-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            text-align: center;
+        }
+
+        .about-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #000000;
+        }
+
+        .about-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: #333333;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-item {
+            background: #ffffff;
+            padding: 2rem;
+            border-radius: 10px;
+            border: 1px solid #e0e0e0;
+            text-align: center;
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: #000000;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 80px 0;
+            background-color: #000000;
+            color: #ffffff;
+        }
+
+        .contact-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-form {
+            background: #ffffff;
+            color: #000000;
+            padding: 3rem;
+            border-radius: 10px;
+            margin-top: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            text-align: right;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: #000000;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #000000;
+        }
+
+        .submit-btn {
+            background-color: #000000;
+            color: #ffffff;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            background-color: #333333;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #111111;
+            color: #ffffff;
+            padding: 3rem 0 1rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-links a {
+            color: #ffffff;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-links a:hover {
+            color: #cccccc;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #333333;
+            padding-top: 1rem;
+            margin-top: 2rem;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .hero-stats {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .services-grid,
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-form {
+                padding: 2rem;
+            }
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">Tunisian Services</div>
+            <ul class="nav-links">
+                <li><a href="#home">الرئيسية</a></li>
+                <li><a href="#services">الخدمات</a></li>
+                <li><a href="#about">من نحن</a></li>
+                <li><a href="#contact">تواصل معنا</a></li>
+            </ul>
+            <a href="#contact" class="contact-btn">اطلب خدمة</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="fade-in">Tunisian Services</h1>
+            <p class="fade-in">منصة الخدمات الاحترافية للمستقلين التونسيين</p>
+            <p class="fade-in">نقدم لك أفضل الخدمات في البرمجة، تصميم الفيديو، كتابة المحتوى والتصميم الجرافيكي</p>
+            
+            <div class="hero-stats fade-in">
+                <div class="stat-item">
+                    <div class="stat-number">100+</div>
+                    <div class="stat-label">عميل راضٍ</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">4</div>
+                    <div class="stat-label">خدمات متخصصة</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">دعم متواصل</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <h2 class="section-title fade-in">خدماتنا</h2>
+        <div class="services-grid">
+            
+            <!-- Video Editing Service -->
+            <div class="service-card fade-in">
+                <div class="service-icon">🎬</div>
+                <h3 class="service-title">تحرير الفيديوهات</h3>
+                <p class="service-description">مونتاج احترافي للفيديوهات بأحدث التقنيات والبرامج المتطورة</p>
+                <div class="price-info">
+                    <div class="original-price">50 دينار تونسي</div>
+                    <div class="current-price">35 دينار تونسي</div>
+                    <small>خصم خاص - وفر 15 دينار!</small>
+                </div>
+                <a href="#contact" class="order-btn">اطلب الآن</a>
+            </div>
+
+            <!-- Copywriting Service -->
+            <div class="service-card fade-in">
+                <div class="service-icon">✍️</div>
+                <h3 class="service-title">كتابة المحتوى</h3>
+                <p class="service-description">كتابة محتوى إبداعي وتسويقي يجذب جمهورك المستهدف</p>
+                <div class="price-info">
+                    <div class="price-range">100 كلمة: 20 دينار</div>
+                    <div class="price-range">250 كلمة: 30 دينار</div>
+                </div>
+                <a href="#contact" class="order-btn">اطلب الآن</a>
+            </div>
+
+            <!-- Logo Design Service -->
+            <div class="service-card fade-in">
+                <div class="service-icon">🎨</div>
+                <h3 class="service-title">تصميم الشعارات</h3>
+                <p class="service-description">تصميم شعارات احترافية تعبر عن هوية علامتك التجارية</p>
+                <div class="price-info">
+                    <div class="current-price">35 دينار تونسي</div>
+                    <small>شامل 3 مراجعات مجانية</small>
+                </div>
+                <a href="#contact" class="order-btn">اطلب الآن</a>
+            </div>
+
+            <!-- Poster Design Service -->
+            <div class="service-card fade-in">
+                <div class="service-icon">🖼️</div>
+                <h3 class="service-title">تصميم البوسترات</h3>
+                <p class="service-description">تصميم بوسترات جذابة للإعلانات والفعاليات والمنتجات</p>
+                <div class="price-info">
+                    <div class="current-price">23 دينار تونسي</div>
+                    <small>تصميم عالي الجودة</small>
+                </div>
+                <a href="#contact" class="order-btn">اطلب الآن</a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="about-content">
+            <h2 class="fade-in">لماذا نحن؟</h2>
+            <p class="fade-in">نحن فريق من المستقلين التونسيين المحترفين نقدم خدمات عالية الجودة بأسعار تنافسية</p>
+            
+            <div class="features-grid">
+                <div class="feature-item fade-in">
+                    <div class="feature-icon">⚡</div>
+                    <h3 class="feature-title">سرعة في التنفيذ</h3>
+                    <p>نلتزم بالمواعيد المحددة ونسلم مشاريعك في الوقت المناسب</p>
+                </div>
+                <div class="feature-item fade-in">
+                    <div class="feature-icon">🎯</div>
+                    <h3 class="feature-title">جودة عالية</h3>
+                    <p>نستخدم أحدث الأدوات والتقنيات لضمان أفضل النتائج</p>
+                </div>
+                <div class="feature-item fade-in">
+                    <div class="feature-icon">💰</div>
+                    <h3 class="feature-title">أسعار تنافسية</h3>
+                    <p>نقدم أفضل الأسعار في السوق مع خصومات مميزة</p>
+                </div>
+                <div class="feature-item fade-in">
+                    <div class="feature-icon">🔄</div>
+                    <h3 class="feature-title">مراجعات مجانية</h3>
+                    <p>نوفر مراجعات مجانية لضمان رضاك التام عن الخدمة</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="contact-content">
+            <h2 class="fade-in">تواصل معنا</h2>
+            <p class="fade-in">استعد لتحويل أفكارك إلى واقع مع خدماتنا الاحترافية</p>
+            
+            <div class="contact-form fade-in">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">الاسم الكامل</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">البريد الإلكتروني</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">رقم الهاتف</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="service">الخدمة المطلوبة</label>
+                        <select id="service" name="service" required>
+                            <option value="">اختر الخدمة</option>
+                            <option value="video-editing">تحرير الفيديوهات</option>
+                            <option value="copywriting">كتابة المحتوى</option>
+                            <option value="logo-design">تصميم الشعارات</option>
+                            <option value="poster-design">تصميم البوسترات</option>
+                            <option value="coding">البرمجة</option>
+                            <option value="other">خدمة أخرى</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">تفاصيل المشروع</label>
+                        <textarea id="message" name="message" rows="5" placeholder="اكتب تفاصيل مشروعك هنا..." required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">إرسال الطلب</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="social-links">
+                <a href="mailto:arfaouifathia234@gmail.com" title="البريد الإلكتروني">📧</a>
+                <a href="https://www.instagram.com/albany.ftw?utm_source=ig_web_button_share_sheet&igsh=MW5jZGcybm16eGVteg==" target="_blank" title="Instagram">📷</a>
+                <a href="#" title="واتساب">📱</a>
+                <a href="#" title="LinkedIn">💼</a>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Tunisian Services. جميع الحقوق محفوظة.</p>
+                <p>منصة الخدمات الاحترافية للمستقلين التونسيين</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const name = formData.get('name');
+            const email = formData.get('email');
+            const phone = formData.get('phone');
+            const service = formData.get('service');
+            const message = formData.get('message');
+            
+            // Service names in Arabic
+            const serviceNames = {
+                'video-editing': 'تحرير الفيديوهات',
+                'copywriting': 'كتابة المحتوى',
+                'logo-design': 'تصميم الشعارات',
+                'poster-design': 'تصميم البوسترات',
+                'coding': 'البرمجة',
+                'other': 'خدمة أخرى'
+            };
+            
+            const serviceName = serviceNames[service] || service;
+            
+            // Create email body
+            const emailBody = `
+طلب خدمة جديد من Tunisian Services
+
+تفاصيل العميل:
+الاسم: ${name}
+البريد الإلكتروني: ${email}
+رقم الهاتف: ${phone || 'غير محدد'}
+
+الخدمة المطلوبة: ${serviceName}
+
+تفاصيل المشروع:
+${message}
+
+---
+تم إرسال هذا الطلب من موقع Tunisian Services
+            `.trim();
+            
+            // Create mailto link
+            const mailtoLink = `mailto:arfaouifathia234@gmail.com?subject=${encodeURIComponent('طلب خدمة - ' + serviceName)}&body=${encodeURIComponent(emailBody)}`;
+            
+            // Open email client
+            window.location.href = mailtoLink;
+            
+            // Show success message
+            alert('شكراً لك! سيتم فتح برنامج البريد الإلكتروني لإرسال طلبك. سنتواصل معك قريباً لمناقشة التفاصيل.');
+            
+            // Reset form
+            this.reset();
+        });
+
+        // Header background change on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.backgroundColor = 'rgba(0, 0, 0, 0.95)';
+            } else {
+                header.style.backgroundColor = '#000000';
+            }
+        });
+
+        // Initialize animations on page load
+        window.addEventListener('load', () => {
+            const heroElements = document.querySelectorAll('.hero .fade-in');
+            heroElements.forEach((el, index) => {
+                setTimeout(() => {
+                    el.classList.add('visible');
+                }, index * 200);
+            });
+        });
+    </script>
+</body>
+</html>
